@@ -23,8 +23,8 @@ install:
    - npm install -g firebase-tools
 
 deploy:
-  script:
-   - ng deploy
-   - firebase deploy --token firebase deploy --token $FIREBASE_DEPLOY_KEY
-   environment:
-   - name: production
+  environment:
+    name: production
+  script: 
+    - ng deploy
+    - "firebase deploy --token firebase deploy --token $FIREBASE_DEPLOY_KEY
