@@ -24,7 +24,7 @@ install:
 
 deploy:
   environment:
-    name: production
+   name: production
   script: 
-    - ng deploy
-    - "firebase deploy --token firebase deploy --token $FIREBASE_DEPLOY_KEY
+   - ng deploy
+   - firebase deploy --token firebase deploy --token $FIREBASE_DEPLOY_KEY
