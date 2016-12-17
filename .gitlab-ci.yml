@@ -16,6 +16,7 @@ image: node:latest
 cache:
   paths:
   - node_modules/
+  - /npmcache/
 
 #stages:
 #  - build
@@ -23,12 +24,14 @@ cache:
 #  - deploy
 
 # Runs before all scripts in all stages
-#before_script:
+before_script:
+-  npm config set cache /npmcache
 
 build:
   stage: build
   script:
    - npm install
+   - npm install -g angular-cli
    - ng build
   artifacts:
    paths:
