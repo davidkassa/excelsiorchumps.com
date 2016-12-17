@@ -26,3 +26,5 @@ deploy:
   script:
    - ng deploy
    - firebase deploy --token firebase deploy --token $FIREBASE_DEPLOY_KEY
+   environment:
+     name: production
