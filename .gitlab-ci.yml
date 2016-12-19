@@ -35,6 +35,11 @@ build:
    paths:
     - dist/
 
+# test:
+#   stage: test
+#   script:
+#    - ng test --single-run --code-coverage
+
 deploy:
   stage: deploy
   environment:

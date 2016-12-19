@@ -2,30 +2,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
+import { FirebaseModule } from './firebase/firebase.module';
 
 import { AppComponent } from './app.component';
+import { ChumpService } from './chump/chump.service';
+import { ChumpTypePipe } from './chump-type.pipe';
+//import { ChumpComponent } from './chump/chump.component';
 
 
-export const firebaseConfig = {
-    apiKey: "AIzaSyCKO3TzqLMFaf_OkHWne7Cs-gFe3nDPr-o",
-    authDomain: "excelsior-chumps.firebaseapp.com",
-    databaseURL: "https://excelsior-chumps.firebaseio.com",
-    storageBucket: "excelsior-chumps.appspot.com",
-    messagingSenderId: "173877803309"
-};
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChumpTypePipe
+//    ChumpComponent
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    FirebaseModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ChumpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

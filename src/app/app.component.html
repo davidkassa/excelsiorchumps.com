@@ -1,5 +1,19 @@
+<h1>Got another</h1>
+<button (click)="addAlmostChump()">Almost Chump!</button>
+<button (click)="addChump()">Chump!!</button>
+<button (click)="addSuperChump()">Super Chump!!!</button>
+
+<h2>Chumps today: {{chumpsTodayCount | async}}</h2>
+<!--<ul>
+  <li class="text" *ngFor="let chump of chumpsToday | async">
+    {{chump.type}} {{chump.createdAt | date:'short'}}
+  </li>
+</ul>-->
+
+<h3>All Chumps</h3>
 <ul>
-  <li class="text" *ngFor="let item of items | async">
-    {{item.$value}}
+  <li class="text" *ngFor="let chump of chumps | async">
+    <span>{{chump.type | chumpType}}</span> <span>{{chump.createdAt | date:'short'}}</span>
   </li>
 </ul>
+<img src="assets/excelsior.jpg"/>

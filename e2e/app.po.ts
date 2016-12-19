@@ -1,11 +1,11 @@
 import { browser, element, by } from 'protractor';
 
-export class ExcelsiorchumpsPage {
+export class ExcelsiorChumpsPage {
   navigateTo() {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getItemCount() {
+    return element.all(by.css('app-root text')).count();
   }
 }

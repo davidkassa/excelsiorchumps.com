@@ -1,14 +1,14 @@
-import { ExcelsiorchumpsPage } from './app.po';
+import { ExcelsiorChumpsPage } from './app.po';
 
-describe('excelsiorchumps App', function() {
-  let page: ExcelsiorchumpsPage;
+describe('Excelsior Chumps App', function() {
+  let page: ExcelsiorChumpsPage;
 
   beforeEach(() => {
-    page = new ExcelsiorchumpsPage();
+    page = new ExcelsiorChumpsPage();
   });
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getItemCount()).toBeGreaterThanOrEqual(1);
   });
 });
