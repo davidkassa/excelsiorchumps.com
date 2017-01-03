@@ -30,9 +30,9 @@ export class AppComponent {
     this.chumpsTodayCount = chumpService.chumpsTodayCount;
     // this.chumpsOn18Count =  chumpService.getChumpCountByDay("12/18/2016"); 
     // this.chumpsOn28Count =  chumpService.getChumpCountByDay("12/28/2016");
-    for(var i = -5; i <= 1; i++) {
+    for(var i = -6; i <= 0; i++) {
       //this.thisWeeksChumps.push(chumpService.getChumpCountByDay(moment().day(i)));
-      this.thisWeeksChumps.push(this.chumpDayService.getChumpDay(moment().day(i)));
+      this.thisWeeksChumps.push(this.chumpDayService.getChumpDay(moment().add(i,'days')));
     }
     //this.thisWeeksChumps.push(this.chumpsOn18Count, this.chumpsOn28Count);
   }
