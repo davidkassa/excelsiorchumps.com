@@ -12,6 +12,8 @@ import * as moment from 'moment';
 import { IChump, Chump } from './chump';
 import { ChumpType } from '../chump-type.enum';
 
+
+//TODO split into Chump, ChumpDay, and ChumpCount Services?
 @Injectable()
 export class ChumpService {
   // https://github.com/r-park/todo-angular2-firebase/blob/master/src/tasks/services/task-service.ts
@@ -30,11 +32,19 @@ export class ChumpService {
         orderByChild: 'createdAt'
       }
     });
+
     //This might be suspect? Need to better understand this stuff
     this.chumps = this._chumps.map( (arr) => { return arr.reverse(); } );
     this.chumpsToday = this._chumps.map( arr => arr.filter( c => moment().startOf('day').diff(c.createdAt) <= 0));
     this.chumpsTodayCount = this._chumps.map( arr => arr.filter( c => moment().startOf('day').diff(c.createdAt) <= 0).length);
-   }
+  }
+
+  getChumpCountByTypeAndDay(type: ChumpType, day: moment.MomentInput): Observable<number> {
+    return this._chumps.map( arr => arr.filter( c => moment(c.createdAt).isSame(day,'day') && c.type === type ).length);
+  }
+  getChumpCountByDay(day: moment.MomentInput): Observable<number> {
+    return this._chumps.map( arr => arr.filter( c => moment(c.createdAt).isSame(day,'day')).length);
+  }
 
   createChump(type: ChumpType, note: string): firebase.Promise<any> {
     return this._chumps.push(new Chump(type,note));

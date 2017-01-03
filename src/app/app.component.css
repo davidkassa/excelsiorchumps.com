@@ -9,7 +9,21 @@ ul
     padding-left: 0px;
 }
 
-ul li span { 
+.text p { 
   display: inline-block;
-  width: 150px;
+  } 
+
+  .text p:first-of-type { 
+  width: 100px;
+  } 
+
+  .text p:last-of-type { 
+      width: 150px;
+  }
+
+md-card {
+    background-color: #add8e6
+}
+  md-card.weekend {
+      background-color: #d3d3d3;
   }
