@@ -6,6 +6,9 @@ import { ChumpType } from './chump-type.enum';
 
 
 export class ChumpDay {
+  date: moment.Moment;
 
-  constructor(public date: moment.Moment, public chumpCounts: ChumpCount[], public total: Observable<number>) {  }
+  constructor(date: moment.MomentInput, public chumpCounts: ChumpCount[], public total: Observable<number>) { 
+    this.date = moment(date);
+   }
 }
