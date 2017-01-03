@@ -46,7 +46,7 @@
     "protractor": "4.0.14",
     "ts-node": "1.7.3",
     "tslint": "^4.0.2",
-    "typescript": "~2.1.4",
+    "typescript": "2.0.10",
     "webdriver-manager": "11.1.0"
   },
   "repository": "git@gitlab.com:davidkassa/excelsiorchumps.com.git",
