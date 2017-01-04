@@ -27,3 +27,5 @@ md-card {
   md-card.weekend {
       background-color: #d3d3d3;
   }
+  
+  img {max-width:100%;}

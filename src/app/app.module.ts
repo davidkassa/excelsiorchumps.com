@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FirebaseModule } from './firebase/firebase.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { ChumpService } from './chump/chump.service';
@@ -25,7 +26,8 @@ import { ChumpTypePipe } from './chump-type.pipe';
     FirebaseModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    FlexLayoutModule.forRoot()
   ],
   providers: [ChumpService, ChumpCountService, ChumpDayService],
   bootstrap: [AppComponent]

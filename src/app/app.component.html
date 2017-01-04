@@ -26,10 +26,16 @@
 </md-grid-list>
 
 <h3>All Chumps</h3>
-<md-list dense>
-  <md-list-item class="text" *ngFor="let chump of chumps | async">
-    <p>{{chump.type | chumpType}}</p>
-    <p>{{chump.createdAt | date:'short'}}</p>
-  </md-list-item>
-</md-list>
-<img src="assets/excelsior.jpg"/>
+<div fxLayout="row" fxLayoutAlign="space-between start" >
+  <div class="flex-item" fxFlex="20%">
+    <md-list dense>
+      <md-list-item class="text" *ngFor="let chump of chumps | async">
+        <p>{{chump.type | chumpType}}</p>
+        <p>{{chump.createdAt | date:'short'}}</p>
+      </md-list-item>
+    </md-list>
+  </div>
+  <div class="flex-item" fxFlex="80%">
+    <img src="assets/excelsior.jpg"/>
+  </div>
+</div>
