@@ -1,5 +1,2 @@
 /* You can add global styles to this file, and also import other style files */
-
-body {
-    /*background: url("assets/excelsior.jpg") no-repeat;*/
-}
+@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';

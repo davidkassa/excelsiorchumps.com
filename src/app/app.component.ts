@@ -1,7 +1,8 @@
 import 'rxjs/add/observable/merge';
 import 'rxjs/add/observable/concat';
 
-import { Component } from '@angular/core';
+import { AuthService } from './providers/auth.service';
+import { Component, ViewContainerRef } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ChumpService } from './chump/chump.service';
 import { ChumpDayService } from './chump-day.service';
@@ -9,6 +10,8 @@ import { ChumpType } from './chump-type.enum';
 import { ChumpDay } from './chump-day';
 import { IChump, Chump } from './chump/chump';
 import * as moment from 'moment';
+import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material/dialog';
+import { PasswordDialogComponent } from './password-dialog/password-dialog.component';
 
 @Component({
   selector: 'ec-root',
@@ -23,9 +26,10 @@ export class AppComponent {
   // chumpsOn28Count: Observable<number>;
   //thisWeeksChumps: Observable<number>[] = [];
   thisWeeksChumps: ChumpDay[] = [];
+  dialogRef: MdDialogRef<PasswordDialogComponent>;
 
   //TODO use a chump component?
-  constructor(private chumpService: ChumpService, private chumpDayService: ChumpDayService) {
+  constructor(private chumpService: ChumpService, private chumpDayService: ChumpDayService, private _auth: AuthService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
     this.chumps = chumpService.chumps;
     this.chumpsTodayCount = chumpService.chumpsTodayCount;
     // this.chumpsOn18Count =  chumpService.getChumpCountByDay("12/18/2016"); 
@@ -35,15 +39,36 @@ export class AppComponent {
       this.thisWeeksChumps.push(this.chumpDayService.getChumpDay(moment().add(i,'days')));
     }
     //this.thisWeeksChumps.push(this.chumpsOn18Count, this.chumpsOn28Count);
+    
   }
 
   addAlmostChump(): void {
-    this.chumpService.createChump(ChumpType.AlmostChump, null);
+    this.authenticatedAction( () => this.chumpService.createChump(ChumpType.AlmostChump, null) );
   }
+
   addChump(): void {
-    this.chumpService.createChump(ChumpType.Chump, null);
+    this.authenticatedAction( () => this.chumpService.createChump(ChumpType.Chump, null) );
   }
   addSuperChump(): void {
-    this.chumpService.createChump(ChumpType.SuperChump, null);
+    this.authenticatedAction( () => this.chumpService.createChump(ChumpType.SuperChump, null) );
   }
+  
+  authenticatedAction(callback: Function): void {
+    if(!this._auth.authenticated) {
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.viewContainerRef;
+  
+      this.dialogRef = this.dialog.open(PasswordDialogComponent, config);
+      this.dialogRef.afterClosed().subscribe(result => {
+        if(this._auth.authenticated) {
+          callback();
+        }
+        this.dialogRef = null;
+      });
+    }
+    else {
+      callback();
+    }
+  }
+  
 }
