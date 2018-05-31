@@ -46,5 +46,7 @@ deploy:
    name: production
   dependencies:
    - build
+  only:
+   - master
   script: 
    - firebase deploy --token $FIREBASE_DEPLOY_KEY
