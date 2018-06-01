@@ -15,7 +15,7 @@ import { ChumpCountService } from './chump-count.service';
 import { ChumpDayService } from './chump-day.service';
 import { ChumpTypePipe } from './chump-type.pipe';
 import { PasswordDialogComponent } from './password-dialog/password-dialog.component';
-//import { ChumpComponent } from './chump/chump.component';
+import { ChumpComponent } from './chump/chump.component';
 
 
 
@@ -23,8 +23,8 @@ import { PasswordDialogComponent } from './password-dialog/password-dialog.compo
   declarations: [
     AppComponent,
     ChumpTypePipe,
-    PasswordDialogComponent
-//    ChumpComponent
+    PasswordDialogComponent,
+    ChumpComponent
   ],
   imports: [
     BrowserModule,
