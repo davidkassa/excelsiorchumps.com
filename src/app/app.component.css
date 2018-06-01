@@ -21,10 +21,10 @@ ul
       width: 150px;
   }
 
-md-card {
+mat-card {
     background-color: #add8e6
 }
-  md-card.weekend {
+  mat-card.weekend {
       background-color: #d3d3d3;
   }
   

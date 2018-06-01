@@ -1,5 +1,5 @@
 import 'hammerjs';
-import { MaterialModule } from '@angular/material';
+import { MatDialogModule,MatFormFieldModule,MatGridListModule,MatCardModule,MatListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -30,8 +30,8 @@ import { PasswordDialogComponent } from './password-dialog/password-dialog.compo
     FirebaseModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
-    FlexLayoutModule.forRoot()
+    MatDialogModule,MatFormFieldModule,MatGridListModule,MatCardModule,MatListModule,
+    FlexLayoutModule
   ],
   providers: [ChumpService, ChumpCountService, ChumpDayService, AuthService],
   bootstrap: [AppComponent],

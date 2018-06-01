@@ -1,34 +1,29 @@
 // from https://github.com/angular/angularfire2/blob/master/docs/Auth-with-Ionic2.md
 import { Injectable } from '@angular/core';
-import { AuthProviders, FirebaseAuth, FirebaseAuthState, AuthMethods } from 'angularfire2';
+import { Observable } from 'rxjs';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
-  private authState: FirebaseAuthState;
+  private idToken: Observable<string>;
 
-  constructor(public auth$: FirebaseAuth) {
-    //this.authState = auth$.getAuth();
-    auth$.subscribe((state: FirebaseAuthState) => {
-      this.authState = state;
-    });
+  constructor(public afAuth: AngularFireAuth) {
+    //afAuth.authState; // only triggered on sign-in/out (for old behavior use .idToken)
+    this.idToken = afAuth.idToken;
   }
 
   get authenticated(): boolean {
-    return this.authState !== null;
+    return this.idToken !== null;
   }
 
-  signIn(password: string): firebase.Promise<boolean> {
-    return this.auth$.login({
-      email: 'david.kassa@gmail.com',
-      password: password,
-    },{
-      provider: AuthProviders.Password,
-      method: AuthMethods.Password
-    }).then( result => this.authenticated, error => false);
+  signIn(password: string): Promise<boolean> {
+    return this.afAuth.auth.signInWithEmailAndPassword('david.kassa@gmail.com', password)
+    .then( result => this.authenticated, error => false);
   }
   
   signOut(): void {
-    this.auth$.logout();
+    this.afAuth.auth.signOut();
   }
 
 //   displayName(): string {

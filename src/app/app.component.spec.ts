@@ -2,7 +2,7 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 describe('AppComponent', () => {
   beforeEach(() => {
@@ -20,7 +20,7 @@ describe('AppComponent', () => {
         AppComponent
       ],
       imports: [
-        AngularFire
+        AngularFireDatabase
       ]
     });
     TestBed.compileComponents();

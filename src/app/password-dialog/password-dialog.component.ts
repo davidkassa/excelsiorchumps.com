@@ -1,5 +1,5 @@
 import { Component, HostBinding } from '@angular/core';
-import { MdDialog, MdDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { AuthService } from '../providers/auth.service';
 
 @Component({
@@ -21,7 +21,7 @@ import { AuthService } from '../providers/auth.service';
 export class PasswordDialogComponent {
   @HostBinding('class.shake') errorMessage: string;
   password: string;
-  constructor(public dialogRef: MdDialogRef<PasswordDialogComponent>, private _auth: AuthService) { 
+  constructor(public dialogRef: MatDialogRef<PasswordDialogComponent>, private _auth: AuthService) { 
     this.password = "";
   }
   

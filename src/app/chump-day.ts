@@ -1,5 +1,5 @@
 import * as moment from 'moment';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { ChumpCount } from './chump-count';
 import { ChumpType } from './chump-type.enum';
