@@ -1,16 +1,16 @@
-import 'rxjs/add/observable/merge';
-import 'rxjs/add/observable/concat';
+// import 'rxjs/add/observable/merge';
+// import 'rxjs/add/observable/concat';
 
 import { AuthService } from './providers/auth.service';
 import { Component, ViewContainerRef } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { ChumpService } from './chump/chump.service';
 import { ChumpDayService } from './chump-day.service';
 import { ChumpType } from './chump-type.enum';
 import { ChumpDay } from './chump-day';
 import { IChump, Chump } from './chump/chump';
 import * as moment from 'moment';
-import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material';
 import { PasswordDialogComponent } from './password-dialog/password-dialog.component';
 
 @Component({
@@ -26,10 +26,10 @@ export class AppComponent {
   // chumpsOn28Count: Observable<number>;
   //thisWeeksChumps: Observable<number>[] = [];
   thisWeeksChumps: ChumpDay[] = [];
-  dialogRef: MdDialogRef<PasswordDialogComponent>;
+  dialogRef: MatDialogRef<PasswordDialogComponent>;
 
   //TODO use a chump component?
-  constructor(private chumpService: ChumpService, private chumpDayService: ChumpDayService, private _auth: AuthService, public dialog: MdDialog, public viewContainerRef: ViewContainerRef) {
+  constructor(private chumpService: ChumpService, private chumpDayService: ChumpDayService, private _auth: AuthService, public dialog: MatDialog, public viewContainerRef: ViewContainerRef) {
     this.chumps = chumpService.chumps;
     this.chumpsTodayCount = chumpService.chumpsTodayCount;
     // this.chumpsOn18Count =  chumpService.getChumpCountByDay("12/18/2016"); 
@@ -55,7 +55,7 @@ export class AppComponent {
   
   authenticatedAction(callback: Function): void {
     if(!this._auth.authenticated) {
-      let config = new MdDialogConfig();
+      let config = new MatDialogConfig();
       config.viewContainerRef = this.viewContainerRef;
   
       this.dialogRef = this.dialog.open(PasswordDialogComponent, config);

@@ -1,39 +1,39 @@
 <h1>Got Another</h1>
-<button md-raised-button (click)="addAlmostChump()">Almost Chump!</button>
-<button md-raised-button (click)="addChump()">Chump!!</button>
-<button md-raised-button (click)="addSuperChump()">Super Chump!!!</button>
+<button mat-raised-button (click)="addAlmostChump()">Almost Chump!</button>
+<button mat-raised-button (click)="addChump()">Chump!!</button>
+<button mat-raised-button (click)="addSuperChump()">Super Chump!!!</button>
 
 <h2>Chumps Today: {{chumpsTodayCount | async}}</h2>
 <!--<h2> Chumps on 12/18 Count: {{chumpsOn18Count | async}}</h2>
 <h2> Chumps on 12/28 Count: {{chumpsOn28Count | async}}</h2>-->
 
 <h2>This Week's Chump Count:</h2>
-<md-grid-list cols="7" gutterSize="4px"  >
-   <md-grid-tile *ngFor="let chumpDay of thisWeeksChumps ">
-     <md-card [ngClass]="{weekend: chumpDay.date.day() < 1 || chumpDay.date.day() > 5}" >
-      <md-card-header>
-        <md-card-title>{{chumpDay.date | date:'MM/dd'}}<!--Total: {{chumpDay.total | async}} --></md-card-title>
+<mat-grid-list cols="7" gutterSize="4px"  >
+   <mat-grid-tile *ngFor="let chumpDay of thisWeeksChumps ">
+     <mat-card [ngClass]="{weekend: chumpDay.date.day() < 1 || chumpDay.date.day() > 5}" >
+      <mat-card-header>
+        <mat-card-title>{{chumpDay.date | date:'MM/dd'}}<!--Total: {{chumpDay.total | async}} --></mat-card-title>
         <!--<md-card-subtitle></md-card-subtitle>-->
-      </md-card-header>
-      <md-card-content>
+      </mat-card-header>
+      <mat-card-content>
         <!--Total: {{chumpDay.total | async}} -->
         <div *ngFor="let chumpCount of chumpDay.chumpCounts">
             {{chumpCount.type | chumpType}}: {{ chumpCount.count | async }}
         </div>
-      </md-card-content>
-    </md-card>
-   </md-grid-tile>
-</md-grid-list>
+      </mat-card-content>
+    </mat-card>
+   </mat-grid-tile>
+</mat-grid-list>
 
 <h3>All Chumps</h3>
 <div fxLayout="row" fxLayoutAlign="space-between start" >
   <div class="flex-item" fxFlex="20%">
-    <md-list dense>
-      <md-list-item class="text" *ngFor="let chump of chumps | async">
+    <mat-list dense>
+      <mat-list-item class="text" *ngFor="let chump of chumps | async">
         <p>{{chump.type | chumpType}}</p>
         <p>{{chump.createdAt | date:'short'}}</p>
-      </md-list-item>
-    </md-list>
+      </mat-list-item>
+    </mat-list>
   </div>
   <div class="flex-item" fxFlex="80%">
     <img src="assets/excelsior.jpg"/>

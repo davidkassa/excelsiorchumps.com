@@ -1,17 +1,16 @@
 import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/merge';
+// import 'rxjs/add/operator/merge';
 
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/count';
-import 'rxjs/add/operator/scan';
-import 'rxjs/add/operator/reduce';
-import 'rxjs/add/operator/switch';
-import 'rxjs/add/operator/switchMap';
+// import 'rxjs/add/operator/map';
+// import 'rxjs/add/operator/count';
+// import 'rxjs/add/operator/scan';
+// import 'rxjs/add/operator/reduce';
+// import 'rxjs/add/operator/switch';
+// import 'rxjs/add/operator/switchMap';
 
 
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Operator} from 'rxjs/Operator';
+import { Observable, Operator } from 'rxjs';
 import * as moment from 'moment';
 import { EnumValues } from 'enum-values';
 
