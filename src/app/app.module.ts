@@ -1,6 +1,7 @@
 import 'hammerjs';
-import { MatDialogModule,MatFormFieldModule,MatGridListModule,MatCardModule,MatListModule } from '@angular/material';
+import { MatButtonModule,MatInputModule,MatDialogModule,MatFormFieldModule,MatGridListModule,MatCardModule,MatListModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -27,10 +28,11 @@ import { PasswordDialogComponent } from './password-dialog/password-dialog.compo
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FirebaseModule,
     FormsModule,
     HttpModule,
-    MatDialogModule,MatFormFieldModule,MatGridListModule,MatCardModule,MatListModule,
+    MatButtonModule,MatInputModule,MatDialogModule,MatFormFieldModule,MatGridListModule,MatCardModule,MatListModule,
     FlexLayoutModule
   ],
   providers: [ChumpService, ChumpCountService, ChumpDayService, AuthService],

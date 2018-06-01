@@ -31,5 +31,24 @@
 </head>
 <body>
   <ec-root>Chumpifying...</ec-root>
+  <script type="text/javascript">
+    refreshAt(3,30,0); //Will refresh the page at 3:30am
+    function refreshAt(hours, minutes, seconds) {
+      var now = new Date();
+      var then = new Date();
+
+      if(now.getHours() > hours ||
+        (now.getHours() == hours && now.getMinutes() > minutes) ||
+          now.getHours() == hours && now.getMinutes() == minutes && now.getSeconds() >= seconds) {
+          then.setDate(now.getDate() + 1);
+      }
+      then.setHours(hours);
+      then.setMinutes(minutes);
+      then.setSeconds(seconds);
+
+      var timeout = (then.getTime() - now.getTime());
+      setTimeout(function() { window.location.reload(true); }, timeout);
+    }
+  </script>
 </body>
 </html>

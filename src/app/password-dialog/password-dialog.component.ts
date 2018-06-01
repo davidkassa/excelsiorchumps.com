@@ -32,6 +32,7 @@ export class PasswordDialogComponent {
         result => { 
           if(result) {
             //good
+            console.log("result: " + result)
             this.dialogRef.close(result);
           }
           else {

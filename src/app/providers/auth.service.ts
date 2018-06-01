@@ -1,4 +1,6 @@
 // from https://github.com/angular/angularfire2/blob/master/docs/Auth-with-Ionic2.md
+import 'rxjs/add/operator/isEmpty'; 
+
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -6,20 +8,21 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
-  private idToken: Observable<string>;
+  private user: firebase.User;
 
   constructor(public afAuth: AngularFireAuth) {
-    //afAuth.authState; // only triggered on sign-in/out (for old behavior use .idToken)
-    this.idToken = afAuth.idToken;
+    // only triggered on sign-in/out (for old behavior use .idToken)
+    afAuth.authState.subscribe( u => this.user = u);
   }
 
   get authenticated(): boolean {
-    return this.idToken !== null;
+    return this.user == null ? false : !this.user.isAnonymous;
   }
 
   signIn(password: string): Promise<boolean> {
+    console.log("SignIn");
     return this.afAuth.auth.signInWithEmailAndPassword('david.kassa@gmail.com', password)
-    .then( result => this.authenticated, error => false);
+  .then( (result/*:firebase.UserCredential*/) => {this.user = result.user; return this.authenticated;}, error => false);
   }
   
   signOut(): void {

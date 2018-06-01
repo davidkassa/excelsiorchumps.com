@@ -32,7 +32,7 @@ export class ChumpService {
     const path = '/chumps';
 
     this._chumpList = db.list(path, ref => ref.orderByChild('createdAt'));
-    this._chumps = this._chumpList.snapshotChanges().map(actions => {let c:IChump[]; return c.concat(...actions.map((act) => act.payload.val()))});
+    this._chumps = this._chumpList.snapshotChanges().map(actions => {let c:IChump[] = []; return c.concat(...actions.map((act) => act.payload.val()))});
 
     //This might be suspect? Need to better understand this stuff
     this.chumps = this._chumps.map( (arr) => { return arr.reverse(); } );
