@@ -165,9 +165,9 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/material@^6.0.2":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-6.2.0.tgz#63cd30dc84cf9610c8fb4c16027836bfcf9fc520"
+"@angular/material@^6.2.1":
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-6.2.1.tgz#aec3387db755145b80d66d8497d4a834f88b61be"
   dependencies:
     tslib "^1.7.1"
 
